@@ -1,0 +1,118 @@
+body {
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    transition: background 0.5s ease, color 0.5s ease;
+    overflow:hidden;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+}
+
+
+#clock-container {
+    
+    padding: 20px;
+    border: 4px solid limegreen;
+    border-radius: 10px;
+    box-shadow: 0 0 15px limegreen;
+    margin-bottom: 15px;
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform-origin: center;
+    transition: transform 0.2s ease-in-out;
+    position: relative;
+}
+
+#controls-container {
+    position: relative;
+    bottom: -20px; 
+    padding: 20px;
+    border: 4px solid limegreen;
+    border-radius: 10px;
+    box-shadow: 0 0 15px limegreen;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.fullscreen #controls-container {
+    opacity: 0;
+    visibility: hidden;
+}
+
+#clock {
+    font-family: 'Press Start 2P', monospace;
+    /*ChatGPT "miks on siin numbrid üle ääre vahepeal sisse / välja zoomides. Kuidas seda parandada? */
+    font-size: clamp(2rem, 3vw, 5rem); 
+    color: limegreen;
+    text-shadow: 3px 3px 0px black, 4px 4px 10px rgba(0, 255, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s ease-in-out;
+    white-space: nowrap;
+}
+
+#date {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 1vw;
+    cursor: pointer;
+    color: white;
+    margin-top: 10px;
+    transition: transform 0.2s ease-in-out;
+}
+
+#date:hover {
+    color: limegreen;
+}
+
+#controls {
+    display: flex; 
+    justify-content: center;
+    gap: 20px; 
+}
+
+.control-item { /* ChatGPT aitas paigutada controlsi õigesse kohta */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+select, input[type="color"] {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 1rem;
+    padding: 10px;
+    border: 2px solid limegreen;
+    color: limegreen;
+    outline: none;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+label {
+    font-family: 'Press Start 2P', monospace;
+    color: limegreen;
+    margin-bottom: 5px;
+}
+
+.hidden {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    pointer-events: none;
+}

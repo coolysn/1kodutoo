@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixelated Digital Clock</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="clock.css">
+</head>
+<body>
+
+<div id="container">
+   
+    <div id="clock-container">
+        <div id="clock">
+            <span id="hours">00:</span>
+            <span id="minutes">00:</span>
+            <span id="seconds">00</span>
+        </div>
+        <div id="calendar-wrapper">
+            <input type="date" id="calendar" class="hidden">
+        </div>
+        
+        <div id="date">1. Jaanuar 2024</div>
+    </div>
+
+    <div id="controls-container">
+        <div id="controls">
+            <div class="control-item">
+                <label for="colorPicker">Vali värv (RGB):</label>
+                <input type="color" id="colorPicker" value="#000000">
+            </div>
+
+            <div class="control-item">
+                <label for="themeSelect">Vali teema:</label>
+                <select id="themeSelect">
+                    <option value="dark">Tume</option>
+                    <option value="light">Hele</option>
+                </select>
+                <label for="scaleInput">Kella suurus (%):</label>
+                <input type="number" id="scaleInput" min="30" max="150" value="100">
+                <button id="ScaleButton">Rakenda</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+    
+ 
+<script src="clock.js"></script>
+
+</body>
+</html>
