@@ -1,7 +1,7 @@
 # 1-kodutoo
 
 AUTOR: Sophia Nikolajevski
-[GitHubi repositoorium](https://github.com/kasutajanimi/repositoorium)
+
 Samuti võimalik näha siin: (https://www.tlu.ee/~cooly/kodutoo1/clock.html)
 
 ![Kuvatõmmis lehest](image-1.png)
