@@ -40,3 +40,4 @@ Funktsionaalsus:
 9. Automaatne ümberkohandamine akna suuruse muutmisel
     Kui akna suurust muudetakse. säilib kella keskne positsioon ja skaala.
 
+Olen teinud parandused ja täiendused. Vabandan hilinenud esitamise pärast ning loodan, et võtate arvesse ka viimase commit’i muudatused.
