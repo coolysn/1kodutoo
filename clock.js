@@ -45,16 +45,16 @@ document.addEventListener("DOMContentLoaded", function() {
     textElement.addEventListener("click", changeFont);
 });
 
-
-
 //Teema muutmine (light või dark)
 themeSelect.addEventListener('change', function() { //Chatgpt aitas teha RGB ratta ja muutmise
     if (themeSelect.value === 'dark') {
         document.body.style.color = 'limegreen';
-        document.getElementById('clock-container').style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
-        document.getElementById('controls-container').style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
-        document.getElementById('themeSelect').style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
-        document.getElementById('colorPicker').style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+        document.getElementById('clock-container').style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
+        document.getElementById('controls-container').style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
+        document.getElementById('themeSelect').style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
+        document.getElementById('colorPicker').style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
+        document.getElementById('scaleButton').style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
+        document.getElementById('scaleInput').style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
         document.getElementById('date').style.color = 'white';
 
     } else {
@@ -63,6 +63,8 @@ themeSelect.addEventListener('change', function() { //Chatgpt aitas teha RGB rat
         document.getElementById('controls-container').style.backgroundColor = 'white';
         document.getElementById('themeSelect').style.backgroundColor = 'white';
         document.getElementById('colorPicker').style.backgroundColor = 'white';
+        document.getElementById('scaleButton').style.backgroundColor = 'white';
+        document.getElementById('scaleInput').style.backgroundColor = 'white';
         document.getElementById('date').style.color = 'black';
 
     }
@@ -106,19 +108,19 @@ function updateClock() {
     let year = date.getFullYear();
     dateElement.innerHTML = `${day}. ${monthNames[month]} ${year}`;
 }
-
-let clockContainer = document.getElementById('clock-container');
+//ChatGPT "Mida siin 'applyScale' osas parandada, et jääks scale scrollwheeliga keskele, kas peab olema conteiner või clock-conteiner?"
+let container = document.getElementById('container');
 let scaleInput = document.getElementById('scaleInput');
-let applyScaleButton = document.getElementById('ScaleButton');
+let applyScaleButton = document.getElementById('scaleButton');
 let scale = 1;
 
 function applyScale(newScale) {
-    scale = Math.max(0.3, Math.min(newScale, 1.5)); 
-    clockContainer.style.transform = `scale(${scale})`;
-    scaleInput.value = Math.round(scale * 100);
+    scale = Math.max(0.3, Math.min(newScale, 1.5));
+    container.style.transform = `translate(-50%, -50%) scale(${scale})`;
+
 }
 
-clockContainer.addEventListener("wheel", function(event) {
+container.addEventListener("wheel", function(event) {
     event.preventDefault();// ChatGPT - Kuidas teha nii, et scrollimisega ei liiguks leht kaasa?
     //ChatGPT - Kuidas teha nii, et containeri scale liiguks scrollwheeliga vastavalt ekraanile?
     let zoomFactor = event.deltaY < 0 ? 0.1 : -0.1; 
@@ -131,14 +133,9 @@ applyScaleButton.addEventListener("click", function() {
     applyScale(userScale / 100);
 });
 
-// ChatGPT "Kuidas tagada, et conteiner jääb keskele kui sisse/välja zoomida"
-function resetPosition() {
-    clockContainer.style.transform = `scale(${scale}) translate(0, 0)`;
-}
-
 //ChatGPT "Kuidas hoida keskel containerit kui selle scalei muuta protsentidega," 
 window.addEventListener("resize", function () {
-    clockContainer.style.transform = `translate(-50%, -50%) scale(${scale})`;
+    container.style.transform = `translate(-50%, -50%) scale(${scale})`;
 });
 
 document.addEventListener("keydown", function(event) {
@@ -155,7 +152,7 @@ function toggleFullscreen() {
         });
     } else {
         document.exitFullscreen().then(() => {
-            document.body.classList.remove("fullscreen"); 
+            document.body.classList.remove("fullscreen");
         });
     }
 }
